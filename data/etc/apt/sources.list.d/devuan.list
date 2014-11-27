@@ -1,0 +1,2 @@
+deb http://packages.devuan.org/devuan main contrib non-free
+deb-src http://packages.devuan.org/devuan main contrib non-free

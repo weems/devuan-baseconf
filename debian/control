@@ -1,0 +1,16 @@
+Source: devuan-baseconf
+Section: extra
+Priority: optional
+Maintainer: Franco (nextime) Lanza <nextime@devuan.org>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Homepage: http://www.devuan.org
+Vcs-Git: https://github.org/devuan/devuan-baseconf.git
+Vcs-Browser: https://github.com/devuan/devuan-baseconf
+
+Package: devuan-baseconf
+Architecture: all
+Depends: ${misc:Depends}
+Description: Devuan base config files
+ Devuan base apt config files provides apt pinning to use sysvinit-core by default instead of systemd
+ and for give higher preference to devuan repositories.
