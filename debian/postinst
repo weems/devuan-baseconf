@@ -17,8 +17,8 @@ case "$1" in
       if [ -x /usr/bin/lsb_release ] ; then
          suite=$(lsb_release -sr)
       fi
-      echo "deb http://packages.devuan.org/devuan $suite $dist" > /etc/apt/sources.list.d/devuan.list
-      echo "deb-src http://packages.devuan.org/devuan $suite $dist" >> /etc/apt/sources.list.d/devuan.list
+      echo "deb http://packages.devuan.org/devuan $suite $dists" > /etc/apt/sources.list.d/devuan.list
+      echo "deb-src http://packages.devuan.org/devuan $suite $dists" >> /etc/apt/sources.list.d/devuan.list
     fi
     ;;
 

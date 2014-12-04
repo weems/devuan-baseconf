@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    remove)
+    ;;
+
+    purge)
+      if [ -f /etc/apt/sources.list.d/devuan.list ] ; then
+         rm -f /etc/apt/sources.list.d/devuan.list
+      fi
+    ;;
+
+    upgrade|deconfigure)
+    ;;
+
+    failed-upgrade)
+    ;;
+
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0
+
