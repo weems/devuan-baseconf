@@ -1,0 +1,37 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    configure)
+    suite="stable"
+    dist="main"
+    if [ ! -f /etc/apt/sources.lists.d/devuan.list ]; then
+      if [ -f /etc/apt/sources.list ] ; then
+         for dist in contrib non-free; do
+            if grep -q '^[^#]* '$dist /etc/apt/sources.list; then
+               dists="$dists $dist"
+            fi
+         done
+      fi
+      if [ -x /usr/bin/lsb_release ] ; then
+         suite=$(lsb_release -sr)
+      fi
+      echo "deb http://packages.devuan.org/devuan $suite $dist" > /etc/apt/sources.list.d/devuan.list
+      echo "deb-src http://packages.devuan.org/devuan $suite $dist" >> /etc/apt/sources.list.d/devuan.list
+    fi
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0
+
